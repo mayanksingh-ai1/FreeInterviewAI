@@ -8,7 +8,15 @@ import {
   RecommendedModelInfo,
 } from '../types';
 
-export const BACKEND_URL = 'http://127.0.0.1:8000';
+export const CLOUD_BACKEND_URL = 'https://automobile-platforms-ultra-excluding.trycloudflare.com';
+export const LOCAL_BACKEND_URL = 'http://127.0.0.1:8000';
+
+// Use cloud backend when hosted on GitHub Pages or custom domain; fall back to local when running on localhost
+export const BACKEND_URL =
+  typeof window !== 'undefined' &&
+  (window.location.hostname.includes('github.io') || window.location.hostname.includes('trycloudflare.com'))
+    ? CLOUD_BACKEND_URL
+    : LOCAL_BACKEND_URL;
 
 export interface ChatApiResult {
   content: string;
