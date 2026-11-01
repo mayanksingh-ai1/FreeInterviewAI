@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: freeinterviewai-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BACKEND_HOST
+        value: 0.0.0.0
+      - key: ALLOW_MOCK_FALLBACK
+        value: "true"
